@@ -1292,7 +1292,8 @@
 
 			// If there are no absolute children, use offsetHeight
 			if( absoluteChildren === 0 ) {
-				height = element.offsetHeight;
+				// height = element.offsetHeight;
+				height = 593;
 			}
 
 		}
@@ -1560,7 +1561,6 @@
 	 * presentation.
 	 */
 	function layout() {
-
 		if( dom.wrapper && !isPrintingPDF() ) {
 
 			var size = getComputedSlideSize();
@@ -2254,17 +2254,19 @@
 			}
 			return;
 		}
-		var speak_text = new SpeechSynthesisUtterance(lines.pop());
-		speak_text.onend = function(e) {
-			step_through_lines(lines);
-		};
-		window.utterances = [];
-		utterances.push( speak_text );
-		speaking = true;
-		if( autoSlidePlayer ) {
-			autoSlidePlayer.setPlaying( true );
+		if( !autoSlidePaused && !isPaused() && !isOverview() ) {
+			var speak_text = new SpeechSynthesisUtterance(lines.pop());
+			speak_text.onend = function(e) {
+				step_through_lines(lines);
+			};
+			window.utterances = [];
+			utterances.push( speak_text );
+			speaking = true;
+			if( autoSlidePlayer ) {
+				autoSlidePlayer.setPlaying( true );
+			}
+			speechSynthesis.speak(speak_text);
 		}
-		speechSynthesis.speak(speak_text);
 	}
 
 	/**
@@ -3764,6 +3766,7 @@
 			}
 			cancelAutoSlide();
 			speechSynthesis.cancel();
+			speaking = false;
 		}
 
 	}

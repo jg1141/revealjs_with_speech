@@ -36,6 +36,9 @@ def hello():
             slide_data.append(slide_item)
         f.write(",".join(slide_data))
         f.write(bottom_of_index)
+    with open("{}.script.txt".format(deck), "w") as f:
+        for index, item in enumerate(texts):
+            f.write("\n\n_Slide {}\n{}".format(index, item[1]))
     webbrowser.open( os.path.join("file://{}".format(os.getcwd()), "{}.html#test".format(deck)) )
     os._exit(1)
 
@@ -49,13 +52,16 @@ def stem(file_name_or_path):
 
 
 class Slides():
-    def read_and_parse(self, file_path, files):
+    def read_and_parse(self, file_path, files, slide_texts_from_script):
         image_urls = ["file://{}/{}".format(file_path, item) for item in files]
 
         htmlFile = codecs.open(os.path.join(os.getcwd(), html_file_name), encoding='utf-8', mode='w+')
         writeHtmlHeader2(htmlFile)
         for index, image_url in enumerate(image_urls):
-            writeSlide2(htmlFile, image_url, index)
+            text = ""
+            if slide_texts_from_script and index < len(slide_texts_from_script):
+                text = slide_texts_from_script[index]
+            writeSlide2(htmlFile, image_url, index, text)
         writeHtmlFooter2(htmlFile)
         htmlFile.close()
         print("Created {}".format(html_file_name))
@@ -130,12 +136,12 @@ function save_slide_texts() {
     <div id="playid"></div>
 <table>''')
 
-def writeSlide2(htmlFile, image_file_name, number):
+def writeSlide2(htmlFile, image_file_name, number, text):
     htmlFile.write("""<tr><td valign="top"><img src="{image_file_name}" height="300px"></td>
 <td valign="top"><button onclick="play_text({number})">Play</button></td>
-<td valign="top"><textarea id="textarea{number}" rows="8" cols="50" tabindex={number_plus_one}></textarea></td>
+<td valign="top"><textarea id="textarea{number}" rows="8" cols="50" tabindex={number_plus_one}>{text}</textarea></td>
 </tr>
-""".format(image_file_name=image_file_name, number=number, number_plus_one=number + 1))
+""".format(image_file_name=image_file_name, number=number, number_plus_one=number + 1, text=text))
 
 
 def writeHtmlFooter2(htmlFile):
@@ -261,6 +267,26 @@ Notes: If <full path to pdf file>, then convert will generate .png files.
         time_stamp = time.time()
         deck_folder = "deck{}".format(int(time_stamp))
         os.mkdir(deck_folder)
+
+        # Parse a script file, if one is provided
+        slide_texts_from_script = []
+        if len(argv) == 3:
+            with open(argv[2], "r") as f:
+                script = f.readlines()
+            slide_text = ""
+            for line in script:
+                if line.startswith("_Slide "):
+                    if slide_text:
+                        slide_texts_from_script.append(slide_text)
+                    slide_text = ""
+                elif len(line.strip()) > 0:
+                    slide_text += line.strip() + " "
+            if slide_text:
+                slide_texts_from_script.append(slide_text)
+            for index, text in enumerate(slide_texts_from_script):
+                print(index, text)
+
+
         file_path = os.path.abspath(argv[1])
         if file_path.endswith(".pdf"):
             with tempfile.TemporaryDirectory() as tmpdirname:
@@ -289,7 +315,7 @@ Notes: If <full path to pdf file>, then convert will generate .png files.
         except OSError:
             pass
         slides = Slides()
-        slides.read_and_parse(os.path.abspath(deck_folder), files)
+        slides.read_and_parse(os.path.abspath(deck_folder), files, slide_texts_from_script)
         app.run()
 
 
