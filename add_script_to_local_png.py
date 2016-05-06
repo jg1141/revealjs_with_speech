@@ -6,7 +6,7 @@ import tempfile
 import os
 import codecs
 import webbrowser
-
+import re
 
 from flask import Flask, request
 from flask.ext.cors import CORS
@@ -32,7 +32,7 @@ def hello():
         f.write(top_of_index)
         slide_data = []
         for index, item in enumerate(texts):
-            slide_item = '\n{"text":"'+ item[1] + '","image":"'+ os.path.join(deck, images[index][1].split("/")[-1]) + '"}'
+            slide_item = '\n{"text":"'+ item[1] + '","image":"'+ "/".join([ deck, images[index][1].split("/")[-1] ]) + '"}'
             slide_data.append(slide_item)
         f.write(",".join(slide_data))
         f.write(bottom_of_index)
@@ -298,7 +298,7 @@ Notes: If <full path to pdf file>, then convert will generate .png files.
                 file_stem, file_ext = os.path.splitext(file)
                 os.system('convert "{}" "{}.png"'.format(file, file_stem))
                 files = os.listdir(tmpdirname)
-                files = [item for item in files if item[-4:] in [".png",".jpg"]]
+                files = [item for item in files if item[-4:] in [".PNG",".png",".jpg"]]
                 files.sort(key=lambda x: int(x.split("-")[-1].split(".")[0]))
                 print( "\nUsing {} files from {}\n".format(len(files), tmpdirname))
                 for file in files:
@@ -306,7 +306,8 @@ Notes: If <full path to pdf file>, then convert will generate .png files.
                 os.chdir(current_working_directory)
         else:
             files = os.listdir(file_path)
-            files = [item for item in files if item[-4:] in [".png",".jpg"]]
+            files = [item for item in files if item[-4:] in [".PNG",".png",".jpg"]]
+            files.sort(key=lambda x: int(re.sub("[^0-9]", "", x)))
             print( "\nUsing {} files from {}\n".format(len(files), file_path))
             for file in files:
                 shutil.copyfile(os.path.join(file_path, file), os.path.join(deck_folder, file))
