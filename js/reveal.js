@@ -2237,10 +2237,14 @@
 			return;
 		}
 		var lines = text.split('<break/>').reverse();  // ['is a test', 'This']
-		step_through_lines(lines);
+		step_through_lines(lines, indexh, indexv);
 	}
 
-	function step_through_lines(lines) {
+	function step_through_lines(lines, local_indexh, local_indexv) {
+		// on recursive calls, stop talking if moved to different slide
+		if (indexh !== local_indexh || indexv !== local_indexv) {
+			return;
+		}
 		// When there are no lines
 		if (!lines || lines.length == 0) {
 			speaking = false;
@@ -2256,8 +2260,19 @@
 		}
 		if( !autoSlidePaused && !isPaused() && !isOverview() ) {
 			var speak_text = new SpeechSynthesisUtterance(lines.pop());
+			var selected_voice = "Google UK English Female";
+			if (indexv == 1) {
+				selected_voice = "Google español";
+			}
+			var acquired_voice = speechSynthesis.getVoices().filter(function(voice) { return voice.name == selected_voice; })[0];
+			if (typeof acquired_voice === 'undefined') {
+				pauseAutoSlide();
+				return;
+			} else {
+				speak_text.voice = acquired_voice;
+			}			
 			speak_text.onend = function(e) {
-				step_through_lines(lines);
+				step_through_lines(lines, local_indexh, local_indexv);
 			};
 			window.utterances = [];
 			utterances.push( speak_text );
