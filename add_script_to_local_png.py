@@ -9,7 +9,7 @@ import webbrowser
 import re
 
 from flask import Flask, request
-from flask.ext.cors import CORS
+from flask_cors import CORS
 import json
 
 app = Flask(__name__)
@@ -39,7 +39,9 @@ def hello():
     with open("{}.script.txt".format(deck), "w") as f:
         for index, item in enumerate(texts):
             f.write("\n\n_Slide {}\n{}".format(index, item[1]))
-    webbrowser.open( os.path.join("file://{}".format(os.getcwd()), "{}.html#test".format(deck)) )
+    test_url =  os.path.join("file:///{}".format(os.getcwd()), "{}.html".format(deck)) # .replace("\\","/")
+    # print(test_url)
+    webbrowser.open(test_url)
     os._exit(1)
 
 #### Prepare form with images    
@@ -161,9 +163,9 @@ top_of_index = """
     <head>
         <meta charset="utf-8">
 
-        <title>reveal.js – The HTML Presentation Framework</title>
+        <title>Presentation</title>
 
-        <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+        <meta name="description" content="reveal.js A framework for easily creating beautiful presentations using HTML">
         <meta name="author" content="Hakim El Hattab">
 
         <meta name="apple-mobile-web-app-capable" content="yes">
@@ -209,8 +211,8 @@ top_of_index = """
 
     <script type="text/javascript">
         function fetch_slides() {
-            var hash = window.location.href.split('#')[1];
-            if (hash == "test" || window.location.href.startsWith('file:') == false) {
+            // var hash = window.location.href.split('#')[1];
+            // if (hash == "test" || window.location.href.startsWith('file:') == false) {
             var data = ["""
 
 bottom_of_index = """]
@@ -222,7 +224,7 @@ bottom_of_index = """]
                     section_node.appendChild(img_node); 
                     document.getElementById("slides").appendChild(section_node);
                 }
-}
+// }
 
                 // Full list of configuration options available at:
                 // https://github.com/hakimel/reveal.js#configuration

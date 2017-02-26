@@ -12,3 +12,8 @@ Python code does this:
 
 A deck.html with folder and associated css, js, lib and plugin folders can be deployed on Firebase, like [this](http://makeitstick20160504.firebaseapp.com).
 
+# 2017-02-26 Update
+
+Modified to work on Windows 10 (which may break it for Mac)
+
+Local instance: (flask) D:\20170226\revealjs_with_speech
