@@ -1,0 +1,363 @@
+<!doctype html>
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Presentation</title>
+
+    <meta name="description" content="reveal.js A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+
+    <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+</head>
+
+<body onload="fetch_slides();">
+
+
+    <div class="reveal">
+
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides" id="slides">
+
+        </div>
+
+    </div>
+    <div class="ftr"><h5 id="source">Source <a href="http://github.com/xadahiya/gcm-tensorflow-udacity/">Github</a></h5>
+      <h5 id="created_by">Created by <a href="https://nd101.slack.com/team/john_graves">@john_graves </a>and <a href="https://nd101.slack.com/team/xadahiya">@xadahiya</a> on Udacity Slack.</span></h5>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script type="text/javascript">
+        function fetch_slides() {
+            // var hash = window.location.href.split('#')[1];
+            // if (hash == "test" || window.location.href.startsWith('file:') == false) {
+            var data = [{
+                    "text": "These screenshots show my experience bringing up a virtual machine on the Google Cloud. I first downloaded and authenticated with the Google Cloud S D K.",
+                    "visual_info": "I first downloaded and authenticated with the Google Cloud SDK using <a href='https://cloud.google.com/sdk/downloads'>this</a> tutorial.",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_021_26022017_193730.png"
+                },
+                {
+                    "text": "Then I clicked, Try Compute Engine, which launched a helpful tutorial.",
+                    "visual_info": "Then I <a href='https://www.google.co.in/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&ved=0ahUKEwiYnsHH163SAhVBxLwKHSgMB_8QFggiMAE&url=https%3A%2F%2Fcloud.google.com%2Fcompute%2Fdocs%2Fquickstarts&usg=AFQjCNGDhsc2ViSzDCE0OnHOOmfcWTMmFg&sig2=wXep3XzFVwZE1cFjRAbtdQ'>clicked</a>, Try Compute Engine, which launched a helpful tutorial. ",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_022_26022017_193745.png"
+                },
+                {
+                    "text": "It guided me to select, Compute Engine, from the side bar.",
+                    "visual_info": "It guided me to select, Compute Engine, from the side bar.",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_023_26022017_194018.png"
+                },
+                {
+                    "text": "There was a short wait while compute engine was initialized.",
+                    "visual_info": "There was a short wait while compute engine was initialized.",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_024_26022017_194034.png"
+                },
+                {
+                    "text": "Then I could create a virtual machine instance by clicking the big blue, Create, button.",
+                    "visual_info": "Then I could create a virtual machine instance by clicking the big blue, Create, button.",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_025_26022017_194202.png"
+                },
+                {
+                    "text": "I picked a Linux image.",
+                    "visual_info": "I picked a Linux image.",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_026_26022017_194432.png"
+                },
+                {
+                    "text": "And configured it to allow H T T P S access",
+                    "visual_info": "Configured it to allow HTTPS access",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_027_26022017_194527.png"
+                },
+                {
+                    "text": "There was another short wait while the instance was created.",
+                    "visual_info": "There was another short wait while the instance was created.",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_028_26022017_194536.png"
+                },
+                {
+                    "text": "I then clicked on SSH to connect to the instance.",
+                    "visual_info": "I then clicked on SSH to connect to the instance.",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_029_26022017_194652.png"
+                },
+                {
+                    "text": "My browser blocked the popup, at first.",
+                    "visual_info": "My browser blocked the popup, at first.",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_030_26022017_194704.png"
+                },
+                {
+                    "text": "But, when I tried it again, I was prompted to initiate the S S H connection",
+                    "visual_info": "But, when I tried it again, I was prompted to initiate the SSH connection",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_031_26022017_194735.png"
+                },
+                {
+                    "text": "And the connection was made without my having to use an S S H client. Very nice.",
+                    "visual_info": "The SSH connection established.",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_032_26022017_194746.png"
+                },
+                {
+                    "text": "The tutorial suggested running a web server.",
+                    "visual_info": "The tutorial suggested running a web server.",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_033_26022017_194804.png"
+                },
+                {
+                    "text": "So I followed the commands.",
+                    "visual_info": "So I followed the commands.",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_034_26022017_194819.png"
+                },
+                {
+                    "text": "And, sure enough, it served up, Hello world.",
+                    "visual_info": "And, sure enough, it served up, Hello world.",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_035_26022017_194836.png"
+                },
+                {
+                    "text": "So then I wanted the server to have Anaconda, so I used w get to fetch it.",
+                    "visual_info": "So then I wanted the server to have Anaconda, so I used wget to fetch it.<pre>wget http://repo.continuum.io/archive/Anaconda3-4.0.0-Linux-x86_64.sh</pre>",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_036_26022017_195004.png"
+                },
+                {
+                    "text": "This didn't take long.",
+                    "visual_info": "This didn't take long.",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_037_26022017_195017.png"
+                },
+                {
+                    "text": "And then I could run the shell script to complete the installation.",
+                    "visual_info": "And then I could run the shell script to complete the installation. <pre>bash Anaconda3-4.0.0-Linux-x86_64.sh</pre>",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_038_26022017_195046.png"
+                },
+                {
+                    "text": "Approving the license terms",
+                    "visual_info": "Approving the license terms",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_039_26022017_195058.png"
+                },
+                {
+                    "text": "the location for installation",
+                    "visual_info": "the location for installation",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_040_26022017_195109.png"
+                },
+                {
+                    "text": "and finally, after all the libraries had been installed, that I wanted to pre-pend the path in my bash resource file.",
+                    "visual_info": "Finally, after all the libraries had been installed, that I wanted to pre-pend the path in my bash resource file.",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_041_26022017_195227.png"
+                },
+                {
+                    "text": "I then sourced that bash resource file, so the change would take immediate effect.",
+                    "visual_info": "I then sourced that bash resource file, so the change would take immediate effect.<pre>source ~/.bashrc</pre>",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_042_26022017_195250.png"
+                },
+                {
+                    "text": "Next, I installed tensor flow from conda forge.",
+                    "visual_info": "Next, I installed tensor flow from conda forge.<pre>conda install -c conda-forge tensorflow</pre>",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_043_26022017_195452.png"
+                },
+                {
+                    "text": "And this other library, t q d m, which allows for progress bars to show while a deep learning training session is running.",
+                    "visual_info": "And tqdm which allows for progress bars to show training sessions.<pre>conda install -c conda-forge tqdm</pre>",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_044_26022017_195623.png"
+                },
+                {
+                    "text": "Finally, I ran generate config for the jupiter notebooks.",
+                    "visual_info": "Finally, I ran generate config for the jupiter notebooks.<pre>jupyter notebook --generate-config</pre>",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_045_26022017_195649.png"
+                },
+                {
+                    "text": "And edited the resulting jupiter notebook config dot py file.",
+                    "visual_info": "And edited the resulting jupiter notebook config dot py file.<pre>nano ~/.jupyter/jupyter_notebook_config.py</pre>",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_046_26022017_195714.png"
+                },
+                {
+                    "text": "Adding these lines to set the browser to false and the port to 8 1 2 3",
+                    "visual_info": "Adding these lines to set the port to 8123.<pre>c = get_config()</pre><pre>c.NotebookApp.ip = '*'</pre><pre>c.NotebookApp.open_browser = False</pre><pre>c.NotebookApp.port = 8123</pre>",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_047_26022017_195831.png"
+                },
+                {
+                    "text": "I saved out those changes with Control O, Enter, and then Control X.",
+                    "visual_info":"I saved out those changes with Control + X.",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_048_26022017_195845.png"
+                },
+                {
+                    "text": "To leave Jupiter running, I used screen. This also needed to be installed the first time, with a sudo apt get install command.",
+                    "visual_info":"To leave Jupiter running, I used screen.<pre>sudo apt-get install screen</pre>",
+                     "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_049_26022017_195919.png"
+                },
+                {
+                    "text": "Screen, dash S, jupiter, set up a screen session called jupiter that I could detach from, while leaving the session running on the server.",
+                    "visual_info":"Set up a screen session called jupiter that I could detach from, while leaving the session running on the server.<pre>screen -S jupyter</pre> ",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_050_26022017_195939.png"
+                },
+                {
+                    "text": "So then I could get on with setting up a folder and starting a jupiter notebook.",
+                    "visual_info":"So then I could get on with setting up a folder and starting a jupiter notebook.",
+                     "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_051_26022017_200005.png"
+                },
+                {
+                    "text": "But immediately, I pressed Control A, then D, to detach from it.",
+                    "visual_info":"But immediately, I pressed Control A, then D, to detach from it.",
+                     "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_052_26022017_200043.png"
+                },
+                {
+                    "text": "Back on my local system, I used the g cloud utility to tunnel to my virtual machine via ssh.",
+                    "visual_info":"Back on my local system, I used the gcloud utility to tunnel to my virtual machine via ssh.<pre>gcloud compute ssh --zone=<host-zone> --ssh-flag='-D'\\</pre> <pre>--ssh-flag='1080' --ssh-flag='-N' --ssh-flag='-n' <host-name></pre>",
+                     "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_053_26022017_200315.png"
+                },
+                {
+                    "text": "None of my ssh keys had been set up for this, so the utility generated them for me.",
+                    "visual_info":"None of my ssh keys had been set up for this, so the utility generated them for me.",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_054_26022017_200342.png"
+                },
+                {
+                    "text": "I added the virtual machine to my trusted hosts.",
+                    "visual_info":"I added the virtual machine to my trusted hosts.",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_055_26022017_200414.png"
+                },
+                {
+                    "text": "And then I got a p link error.",
+                    "visual_info":"And then I got a p link error.",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_056_26022017_200442.png"
+                },
+                {
+                    "text": "Apparently I had one extra, incorrect, ssh flag. The connection worked once that flag was removed.",
+                    "visual_info":"Apparently I had one extra, incorrect, ssh flag. The connection worked once that flag was removed.",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_057_26022017_200538.png"
+                },
+                {
+                    "text": "In another terminal window, I started my browser with the command line options which allowed it to use a proxy server.",
+                    "visual_info":"In another terminal window, I started my browser with the command line options which allowed it to use a proxy server.<pre><browser executable path> --proxy-server='socks5://localhost:1080' \\ </pre><pre> --host-resolver-rules='MAP * 0.0.0.0 , EXCLUDE localhost' --user-data-dir=/tmp/</pre>",
+                     "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_058_26022017_201018.png"
+                },
+                {
+                    "text": "Finally, opening my instance, on port 8 1 2 3, brought up my Jupiter notebook.",
+                    "visual_info":"Finally, opening my instance, on port 8123, brought up my Jupiter notebook.",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_059_26022017_201228.png"
+                },
+                {
+                    "text": "The Google Cloud console showed the instance running.",
+                    "visual_info":"The Google Cloud console showed the instance running.",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_060_26022017_201335.png"
+                },
+                {
+                    "text": "so, having proved my point, I made it stop.",
+                    "visual_info":"so, having proved my point, I made it stop.",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_061_26022017_201358.png"
+                },
+                {
+                    "text": "Which, as you would expect, I had to confirm was something I really meant to do.",
+                    "visual_info":"Which, as you would expect, I had to confirm was something I really meant to do.",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_062_26022017_201423.png"
+                },
+                {
+                    "text": "The shutdown process produced these convenient notifications. First, stopping V M instance.",
+                    "visual_info":"The shutdown process produced these convenient notifications. First, stopping V M instance.",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_063_26022017_201427.png"
+                },
+                {
+                    "text": "Then, stopping V M instance, succeeded.",
+                    "visual_info":"Then, stopping V M instance, succeeded.",
+                    "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_064_26022017_201507.png"
+                },
+                {
+                    "text": "I figure when I want to do some work now, I can restart the instance and restart Jupiter and I should be good to go.",
+                    "visual_info":"I figured when I want to do some work now, I can restart the instance and restart Jupiter and I should be good to go.",
+                     "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_065_26022017_201527.png"
+                },
+                {
+                    "text": "You can see how long this all took by the time stamps on the notifications I collected along the way. Altogether, about 30 minutes. I hope you have an equally smooth experience using the Google Cloud. Please let me know if you found this walk through useful. ",
+                    "visual_info":"You can see how long this all took by the time stamps on the notifications I collected along the way. Altogether, about 30 minutes. I hope you have an equally smooth experience using the Google Cloud. Please let me know if you found this walk through useful. ",
+                     "image": "https://gc20170226.firebaseapp.com/deck1488093535/capture_066_26022017_201543.png"
+                }
+            ]
+
+
+
+            for (var i = 0; i < data.length; i++) {
+                var section_node = document.createElement("section");
+                $(section_node).addClass("data-markdown"); // Create a <section> node
+                if (data[i]["text"].length > 0) section_node.setAttribute("title", data[i]["text"]);
+                // var script_node = document.createElement("script");
+                // script_node.type = "text/template";
+                // $(script_node).append("");
+                // section_node.appendChild(script_node);
+
+                var data_node = document.createElement("div");
+                $(data_node).append(data[i]["visual_info"]);
+                section_node.appendChild(data_node);
+                var img_node = document.createElement("img"); // Create a <img> node
+                img_node.setAttribute("src", data[i]["image"])
+                section_node.appendChild(img_node);
+                document.getElementById("slides").appendChild(section_node);
+            }
+            // }
+
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [{
+                        src: 'lib/js/classList.js',
+                        condition: function() {
+                            return !document.body.classList;
+                        }
+                    },
+                    {
+                        src: 'plugin/markdown/marked.js',
+                        condition: function() {
+                            return !!document.querySelector('[data-markdown]');
+                        }
+                    },
+                    {
+                        src: 'plugin/markdown/markdown.js',
+                        condition: function() {
+                            return !!document.querySelector('[data-markdown]');
+                        }
+                    },
+                    {
+                        src: 'plugin/highlight/highlight.js',
+                        async: true,
+                        callback: function() {
+                            hljs.initHighlightingOnLoad();
+                        }
+                    },
+                    {
+                        src: 'plugin/zoom-js/zoom.js',
+                        async: true
+                    },
+                    {
+                        src: 'plugin/notes/notes.js',
+                        async: true
+                    }
+                ]
+            });
+        }
+    </script>
+
+</body>
+
+</html>
